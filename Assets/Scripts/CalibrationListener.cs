@@ -15,7 +15,7 @@ public class CalibrationListener : ListenerBase {
     public SteamVR_TrackedObject[] trackers;
     public SteamVR_Action_Boolean m_InitAction;
     public Transform pelvis;
-    public Transform pelvisOffset;
+    //public Transform pelvisOffset;
     private SteamVR_Behaviour_Pose m_Pose = null;
     private calibrationState curState = calibrationState.checkIndex;
 
@@ -49,7 +49,7 @@ public class CalibrationListener : ListenerBase {
                 Debug.LogError("unknown state");
                 break;
         }
-        pelvisOffset.position = pelvis.position;
+        //pelvisOffset.position = pelvis.position;
         //Debug.Log("offset" + Vector3.Scale(pelvisOffset.localPosition, pelvisTkr.localScale).ToString());
     }
 

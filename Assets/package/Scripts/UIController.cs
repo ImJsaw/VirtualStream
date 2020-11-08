@@ -9,8 +9,6 @@ namespace Unity.RenderStreaming
     [RequireComponent(typeof(RectTransform))]
     public class UIController : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI text = null;
-        [SerializeField] CanvasGroup canvasGroup = null;
         [SerializeField] Image pointer = null;
         [SerializeField] private AnimationCurve transitionCurve =
             new AnimationCurve(
@@ -32,28 +30,25 @@ namespace Unity.RenderStreaming
             m_keyboard = input.RemoteKeyboard;
             m_screen = input.RemoteTouchscreen;
             m_gamepad = input.RemoteGamepad;
-
-            m_keyboard.onTextInput += OnTextInput;
+           
         }
 
         void Start()
         {
             m_rectTransform = GetComponent<RectTransform>();
-            canvasGroup.alpha = 0;
-            text.text = string.Empty;
         }
 
         void FixedUpdate()
         {
-            if (!m_keyboard.anyKey.isPressed && !Mathf.Approximately(canvasGroup.alpha, 0f))
-            {
-                timeTransition += Time.deltaTime;
-                canvasGroup.alpha = transitionCurve.Evaluate(timeTransition);
-                if (Mathf.Approximately(canvasGroup.alpha, 0f))
-                {
-                    text.text = string.Empty;
-                }
-            }
+            //if (!m_keyboard.anyKey.isPressed && !Mathf.Approximately(canvasGroup.alpha, 0f))
+            //{
+            //    timeTransition += Time.deltaTime;
+            //    canvasGroup.alpha = transitionCurve.Evaluate(timeTransition);
+            //    if (Mathf.Approximately(canvasGroup.alpha, 0f))
+            //    {
+            //        text.text = string.Empty;
+            //    }
+            //}
 
             bool pointerFromMouse
                 =  HighlightPointerFromMouse(m_mouse, new Vector2Int(Screen.width, Screen.height));
@@ -95,13 +90,6 @@ namespace Unity.RenderStreaming
             pointer.rectTransform.anchoredPosition = pos;
             pointer.color = Color.red;
             return true;
-        }
-
-        void OnTextInput(char c)
-        {
-            canvasGroup.alpha = 1f;
-            text.text = c.ToString();
-            timeTransition = 0;
         }
     }
 }

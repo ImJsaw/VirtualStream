@@ -679,9 +679,6 @@
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>D:/VirtualStream/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
-      <HintPath>D:/VirtualStream/Library/ScriptAssemblies/Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderStreaming.Editor">
       <HintPath>D:/VirtualStream/Library/ScriptAssemblies/Unity.RenderStreaming.Editor.dll</HintPath>
     </Reference>
@@ -720,9 +717,17 @@
       <Project>{635B63AF-7298-406C-A3FB-1AA5CE8CE44B}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
+    <ProjectReference Include="SteamVR_Actions.csproj">
+      <Project>{7B95C697-B6C6-543F-70BC-7CBD255D9DC3}</Project>
+      <Name>SteamVR_Actions</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Template.RenderStreaming.Runtime.csproj">
       <Project>{44B76716-3F3C-B6F3-F56F-2E8B05CD14A0}</Project>
       <Name>Unity.Template.RenderStreaming.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime.csproj">
+      <Project>{98177865-847F-98C5-CA98-27F2CB736E7A}</Project>
+      <Name>Unity.RenderPipelines.HighDefinition.Config.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Input_Editor.csproj">
       <Project>{F5697D8C-2F96-DF5D-5DAD-0F543A6F5FE9}</Project>
@@ -743,10 +748,6 @@
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{457C4D0B-951F-AAC3-E69D-92CBBB860426}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="SteamVR_Actions.csproj">
-      <Project>{7B95C697-B6C6-543F-70BC-7CBD255D9DC3}</Project>
-      <Name>SteamVR_Actions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
