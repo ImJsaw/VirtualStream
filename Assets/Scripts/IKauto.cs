@@ -137,8 +137,8 @@ namespace RootMotion.FinalIK
             GameObject HeadTargetBone1;
             GameObject HeadTargetBone2;
             GameObject HeadTargetBone3;
-            HeadTargetBone1 = GameObject.Find(HeadPath);
-            HeadTargetBone2 = GameObject.Find(HeadPath + "/"+prefix+"Spine1/"+prefix+"Spine2");
+            HeadTargetBone1 = GameObject.Find(HeadPath + "/" + prefix + "Spine1/" + prefix + "Spine2/");
+            HeadTargetBone2 = GameObject.Find(HeadPath + "/"+prefix+"Spine1/"+prefix+"Spine2/"+prefix+"Neck/");
             HeadTargetBone3 = GameObject.Find(HeadPath + "/"+prefix+"Spine1/"+prefix+"Spine2/"+prefix+"Neck/"+prefix+"Head");
             Head.solver.SetChain(HeadTargetBone1.transform, HeadTargetBone2.transform, HeadTargetBone3.transform, this.transform);
 
