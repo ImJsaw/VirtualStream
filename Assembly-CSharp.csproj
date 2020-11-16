@@ -98,6 +98,7 @@
     <None Include="Assets\package\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\package\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\package\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Resources\Scandinavian Interior Archviz\Shaders\DoubleSided Alpha Cutout (Specular).shader" />
     <None Include="Assets\package\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Resources\Scandinavian Interior Archviz\Shaders\Fabric_Carpet.shader" />
