@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Calibrate.cs" />
     <Compile Include="Assets\Scripts\CalibrationListener.cs" />
+    <Compile Include="Assets\Scripts\FPS.cs" />
     <Compile Include="Assets\Scripts\FileSaver.cs" />
     <Compile Include="Assets\Scripts\Follow.cs" />
     <Compile Include="Assets\Scripts\General.cs" />
