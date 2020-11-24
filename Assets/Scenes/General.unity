@@ -4931,9 +4931,11 @@ MonoBehaviour:
   - {fileID: -927199367670048503, guid: ab2c82bb2cecddc479d2ebeb8a0ab8eb, type: 3}
   modelPrefabSelf:
   - {fileID: 7136180419964805061, guid: c7ede064f47d52048b4ce604ea6ee225, type: 3}
-  - {fileID: -927199367670048503, guid: a6b84133ebd03dd4f8174c241ed224dd, type: 3}
+  - {fileID: 8463399886185489560, guid: 2f4be6374fae9da4e88d6323d94b4608, type: 3}
   - {fileID: -927199367670048503, guid: 2dea5b7ca99991c458db9553992843e3, type: 3}
   - {fileID: -927199367670048503, guid: ab2c82bb2cecddc479d2ebeb8a0ab8eb, type: 3}
+  - {fileID: 5189431501223629120, guid: 503c875638f7eff49a00a30b2956f806, type: 3}
+  - {fileID: -927199367670048503, guid: e5b2da327bd048a4b9c6a489c979a06b, type: 3}
   prefix:
   - 'mixamorig:'
   - 'mixamorig:'
