@@ -54,10 +54,12 @@ public static class NetMgr {
     public static void OnMsgRcv(byte[] socketData, Boolean isCient) {
         SocketPackage socketPackage = new SocketPackage();
 
-        MemoryStream ms = new MemoryStream(socketData);
-        BinaryFormatter bf = new BinaryFormatter();
-        ms.Position = 0;
-        socketPackage = (SocketPackage)bf.Deserialize(ms);
+        using (MemoryStream ms = new MemoryStream(socketData)) {
+
+            BinaryFormatter bf = new BinaryFormatter();
+            ms.Position = 0;
+            socketPackage = (SocketPackage)bf.Deserialize(ms);
+        }
 
 
         switch (socketPackage.type) {
@@ -75,15 +77,17 @@ public static class NetMgr {
                     if (MainMgr.inst.headPos.Count > index)
                         MainMgr.inst.headPos[index] = msg.headTransform;
                     MainMgr.inst.modelType[index] = msg.modelType;
-                    if (MainMgr.inst.hasVR[index]) {
-                        Debug.Log("[NetMgr]update server model");
-                        //for ik
-                        MainMgr.inst.leftCtr[index] = msg.leftHandTransform;
-                        MainMgr.inst.rightCtr[index] = msg.rightHandTransform;
-                        MainMgr.inst.leftTkr[index] = msg.leftLegTransform;
-                        MainMgr.inst.rightTkr[index] = msg.rightLegTransform;
-                        MainMgr.inst.pelvisTkr[index] = msg.pelvisTransform;
-                    }
+
+                    //ser ver must have VR.
+                    //if (MainMgr.inst.hasVR[index]) {
+                    Debug.Log("[NetMgr]update server model");
+                    //for ik
+                    MainMgr.inst.leftCtr[index] = msg.leftHandTransform;
+                    MainMgr.inst.rightCtr[index] = msg.rightHandTransform;
+                    MainMgr.inst.leftTkr[index] = msg.leftLegTransform;
+                    MainMgr.inst.rightTkr[index] = msg.rightLegTransform;
+                    MainMgr.inst.pelvisTkr[index] = msg.pelvisTransform;
+                     //}
                     if (msg.leftArmGoal.v3() != new Vector3(0, 0, 0)) {
                         MainMgr.inst.leftArmGoal[index] = msg.leftArmGoal;
                     }
@@ -159,7 +163,7 @@ public static class NetMgr {
 
         byte[] dataByte = Utility.Trans2byte(sendData);
 
-            
+
         try {
             SocketPackage socketPackage = new SocketPackage();
             MemoryStream ms = new MemoryStream(dataByte);

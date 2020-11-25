@@ -4985,8 +4985,8 @@ MonoBehaviour:
   obsController: {fileID: 3451840916537521215, guid: ec13106713031dc4eb7e0a7ab7bdf88a,
     type: 3}
   modelPrefab:
-  - {fileID: 7136180419964805061, guid: c7ede064f47d52048b4ce604ea6ee225, type: 3}
-  - {fileID: 4728013939717938918, guid: 2f4be6374fae9da4e88d6323d94b4608, type: 3}
+  - {fileID: 7136180419964805061, guid: 563c2ee194ad1cd4181327f9ebbabfcd, type: 3}
+  - {fileID: 7136883828347898135, guid: b0231be9df64289428a4127bec8f8c2b, type: 3}
   - {fileID: -927199367670048503, guid: 2dea5b7ca99991c458db9553992843e3, type: 3}
   - {fileID: -927199367670048503, guid: ab2c82bb2cecddc479d2ebeb8a0ab8eb, type: 3}
   - {fileID: 3554104840473831476, guid: 503c875638f7eff49a00a30b2956f806, type: 3}

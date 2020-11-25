@@ -61,16 +61,20 @@ public class General : MonoBehaviour {
                 model.GetComponent<IKModelController>().is_CustomModel = true;
              }
         } else {
-            string prefixStr = "mixamorig:";
+            Debug.Log("client model====");
+           // string prefixStr = "mixamorig:";
             GameObject model = Instantiate(modelPrefab[MainMgr.inst.modelType[index]], new Vector3(0, 0, -6), Quaternion.identity);
-            model.AddComponent<IKModelController>();
+            //model.AddComponent<IKModelController>();
             model.GetComponent<IKModelController>().modelIndex = index;
+            /*
             model.AddComponent<RootMotion.FinalIK.IKauto>();
             model.GetComponent<RootMotion.FinalIK.IKauto>().setPrefix(prefixStr);
             //model.AddComponent<Lock>();
             Debug.Log(MainMgr.inst.modelType[index] + "add prefix : " + prefixStr);
             model.GetComponent<IKModelController>().prefix = prefixStr;
             model.GetComponent<IKModelController>().modelIndex = index;
+             */
+             
         }
         Debug.Log("[model instantiate] generate " + index + " th model");
     }
