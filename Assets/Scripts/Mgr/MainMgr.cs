@@ -37,6 +37,7 @@ public class MainMgr : MonoBehaviour {
     public static bool isClient = false;
     public static bool isVRValid = false;
     public static bool isCamValid = false;
+    public static bool isRegister = false;
     //log tracker index
     public static int leftFootTkrIndex = 5;
     public static int rightFootTkrIndex = 6;

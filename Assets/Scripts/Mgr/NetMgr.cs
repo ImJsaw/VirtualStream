@@ -62,38 +62,50 @@ public static class NetMgr {
 
         switch (socketPackage.type) {
             case packageType.playerPose:
-                Debug.Log("[NetMgr]receive camModel package type");
-                playerPose msg = Utility.byte2Origin<playerPose>(socketPackage.data);
-                int index = MainMgr.inst.getIndexfromUID(msg.UID);
-                if (index != -1) {
-
-                    Debug.Log("[NetMgr]index" + index);
-                    //if (MainMgr.inst.skeletons.Count > index)
-                    //    MainMgr.inst.skeletons[index] = msg.skeleton;
-                    //if (MainMgr.inst.isFirstDataGet.Count > index)
-                    //    MainMgr.inst.isFirstDataGet[index] = true;
-                    if (MainMgr.inst.headPos.Count > index)
-                        MainMgr.inst.headPos[index] = msg.headTransform;
-                    MainMgr.inst.modelType[index] = msg.modelType;
-                    if (MainMgr.inst.hasVR[index]) {
-                        Debug.Log("[NetMgr]update server model");
-                        //for ik
-                        MainMgr.inst.leftCtr[index] = msg.leftHandTransform;
-                        MainMgr.inst.rightCtr[index] = msg.rightHandTransform;
-                        MainMgr.inst.leftTkr[index] = msg.leftLegTransform;
-                        MainMgr.inst.rightTkr[index] = msg.rightLegTransform;
-                        MainMgr.inst.pelvisTkr[index] = msg.pelvisTransform;
-                    }
-                    if (msg.leftArmGoal.v3() != new Vector3(0, 0, 0)) {
-                        MainMgr.inst.leftArmGoal[index] = msg.leftArmGoal;
-                    }
-                    if (msg.rightArmGoal.v3() != new Vector3(0, 0, 0)) {
-                        MainMgr.inst.rightArmGoal[index] = msg.rightArmGoal;
-                    }
+                if (!MainMgr.isRegister)
+                {
+                    Debug.Log("[NetMgr]playerpose without register");
+                    sendMsg(packageType.echoMsg, Utility.Trans2byte("requestRegister"));
                 }
+                else
+                {
+                    Debug.Log("[NetMgr]receive camModel package type" + MainMgr.isRegister);
+                    playerPose msg = Utility.byte2Origin<playerPose>(socketPackage.data);
+                    int index = MainMgr.inst.getIndexfromUID(msg.UID);
+                    if (index != -1)
+                    {
 
-                Debug.Log("[NetMgr]receive complete");
-                sendMsg(packageType.echoMsg, Utility.Trans2byte("model"));
+                        Debug.Log("[NetMgr]index" + index);
+                        //if (MainMgr.inst.skeletons.Count > index)
+                        //    MainMgr.inst.skeletons[index] = msg.skeleton;
+                        //if (MainMgr.inst.isFirstDataGet.Count > index)
+                        //    MainMgr.inst.isFirstDataGet[index] = true;
+                        if (MainMgr.inst.headPos.Count > index)
+                            MainMgr.inst.headPos[index] = msg.headTransform;
+                        MainMgr.inst.modelType[index] = msg.modelType;
+                        if (MainMgr.inst.hasVR[index])
+                        {
+                            Debug.Log("[NetMgr]update server model");
+                            //for ik
+                            MainMgr.inst.leftCtr[index] = msg.leftHandTransform;
+                            MainMgr.inst.rightCtr[index] = msg.rightHandTransform;
+                            MainMgr.inst.leftTkr[index] = msg.leftLegTransform;
+                            MainMgr.inst.rightTkr[index] = msg.rightLegTransform;
+                            MainMgr.inst.pelvisTkr[index] = msg.pelvisTransform;
+                        }
+                        if (msg.leftArmGoal.v3() != new Vector3(0, 0, 0))
+                        {
+                            MainMgr.inst.leftArmGoal[index] = msg.leftArmGoal;
+                        }
+                        if (msg.rightArmGoal.v3() != new Vector3(0, 0, 0))
+                        {
+                            MainMgr.inst.rightArmGoal[index] = msg.rightArmGoal;
+                        }
+                    }
+
+                    Debug.Log("[NetMgr]receive complete");
+                    sendMsg(packageType.echoMsg, Utility.Trans2byte("model"));
+                }
                 break;
             case packageType.register:
 
@@ -138,6 +150,7 @@ public static class NetMgr {
                     MainMgr.inst.rightInitTkr[registerIndex] = registerMsg.rightLegInitTransform;
                     MainMgr.inst.pelvisInitTkr[registerIndex] = registerMsg.pelvisInitTransform;
                 }
+                MainMgr.isRegister = true;
                 sendMsg(packageType.echoMsg, Utility.Trans2byte("register"));
                 break;
             case packageType.echoMsg:
